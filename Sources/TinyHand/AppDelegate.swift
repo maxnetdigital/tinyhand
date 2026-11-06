@@ -37,6 +37,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         overlay.onRecordingChanged = { [weak self] in
             self?.refreshMenu()
         }
+        overlay.onOpenSettings = { [weak self] in
+            self?.openSettings()
+        }
         overlay.extraPassThrough = { [weak self] in
             guard let frame = self?.statusItem.button?.window?.frame else {
                 return []
@@ -58,6 +61,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         if !UserDefaults.standard.bool(forKey: WelcomeWindow.shownKey) || !AXIsProcessTrusted() {
             welcome.show()
         }
+    }
+
+    /// Opening TinyHand again (Finder, Spotlight, Launchpad) shows Settings, so it can be
+    /// reached even when the menu bar icon is hidden behind the notch or a crowded menu bar.
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        openSettings()
+        return false
     }
 
     func applicationWillTerminate(_ notification: Notification) {

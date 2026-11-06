@@ -49,6 +49,7 @@ final class OverlayController {
     private var activity: NSObjectProtocol?
     var onActiveChanged: (() -> Void)?
     var onRecordingChanged: (() -> Void)?
+    var onOpenSettings: (() -> Void)?
     var isRecording: Bool { capture.isRecording }
     var onNeedsPermission: (() -> Void)?
 
@@ -130,6 +131,9 @@ final class OverlayController {
         }
         toolbar.onRecord = { [weak self] in
             self?.toggleRecording()
+        }
+        toolbar.onSettings = { [weak self] in
+            self?.onOpenSettings?()
         }
         toolbar.onExit = { [weak self] in
             self?.exit()

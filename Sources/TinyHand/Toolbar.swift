@@ -6,6 +6,7 @@ final class Toolbar {
     var onExit: (() -> Void)?
     var onSnap: (() -> Void)?
     var onRecord: (() -> Void)?
+    var onSettings: (() -> Void)?
     var onFixPermission: (() -> Void)?
 
     private final class Panel: NSPanel {
@@ -113,6 +114,9 @@ final class Toolbar {
         }
         soundButton = sound
         stack.addArrangedSubview(sound)
+        stack.addArrangedSubview(makeButton(symbol: "gearshape.fill", tip: "Settings") { [weak self] in
+            self?.onSettings?()
+        })
         stack.addArrangedSubview(makeButton(symbol: "xmark", tip: "Exit  (Esc)") { [weak self] in
             self?.onExit?()
         })
