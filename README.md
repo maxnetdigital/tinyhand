@@ -33,6 +33,14 @@ Open `TinyHand.dmg`, drag TinyHand to Applications and allow **Accessibility** w
 While the pointer is on, a small toolbar at the bottom of the screen lets you pick one of
 36 hands or a laser dot, mute the tap sound, or exit.
 
+## Screenshots & screen recording
+
+This fork can take a snapshot or screen recording of the hand and your drawing (two-finger tap / toolbar camera & record, or **⌃⌥S**).
+
+<img src="./docs/assets/demo-screenshot.jpg" alt="TinyHand pointing and drawing on tinyhand.app" width="800" />
+
+[![TinyHand demo](./docs/assets/demo.gif)](./docs/assets/demo.mp4)
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
